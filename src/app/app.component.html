@@ -7,5 +7,47 @@
 
 <h1>This Week's end date</h1>
 <p>{{thisWeekEndDate}}</p>
-<button (click)="getThisWeekEndDate()">Get this week's start date</button>
+<button (click)="getThisWeekEndDate()">Get this week's end date</button>
 <br><br><br><br>
+
+<h1>This Months's start date</h1>
+<p>{{thisMonthStartDate}}</p>
+<button (click)="getThisMonthStartDate()">Get this month's start date</button>
+<br><br><br><br>
+
+
+<h1>This Months's end date</h1>
+<p>{{thisMonthEndDate}}</p>
+<button (click)="getThisMonthEndDate()">Get this month's end date</button>
+<br><br><br><br>
+
+
+<h1>This Year's start date</h1>
+<p>{{thisYearStartDate}}</p>
+<button (click)="getThisYearStartDate()">Get this year's start date</button>
+<br><br><br><br>
+
+
+<h1>This Year's end date</h1>
+<p>{{thisYearEndDate}}</p>
+<button (click)="getThisYearEndDate()">Get this year's end date</button>
+<br><br><br><br>
+
+
+
+<h1>Quarters</h1>
+<ul>
+  <ng-container *ngFor="let q of currentYearQuarters;index as i">
+    <li>Q{{i+1}}
+      <ul>
+        <li>{{q}}</li>
+        <li>{{getLastDayOfQuarter(q)}}</li>
+      </ul>
+    </li>
+  </ng-container>
+</ul>
+<button (click)="getCurrentYearQuarters()">Get this year's Q1,Q2,Q3 and Q4</button>
+<br><br><br><br>
+
+
+

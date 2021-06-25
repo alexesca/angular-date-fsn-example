@@ -1,5 +1,14 @@
 import { Component } from '@angular/core';
-import { startOfWeek, endOfWeek } from 'date-fns';
+import {
+  startOfWeek,
+  endOfWeek,
+  startOfMonth,
+  endOfMonth,
+  startOfYear,
+  endOfYear,
+  eachQuarterOfInterval,
+  lastDayOfQuarter
+} from 'date-fns';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +18,11 @@ import { startOfWeek, endOfWeek } from 'date-fns';
 export class AppComponent {
   thisWeekStartsDate;
   thisWeekEndDate;
-
+  thisMonthStartDate;
+  thisMonthEndDate;
+  thisYearEndDate;
+  thisYearStartDate;
+  currentYearQuarters;
 
   /**
    * Gets this week's start date
@@ -24,5 +37,57 @@ export class AppComponent {
    */
   getThisWeekEndDate(): void {
     this.thisWeekEndDate = endOfWeek(new Date());
+  }
+
+
+  /**
+   * Gets this  month's start date
+   */
+  getThisMonthStartDate(): void {
+    this.thisMonthStartDate = startOfMonth(new Date());
+  }
+
+  /**
+   * Gets this month's end date
+   */
+  getThisMonthEndDate(): void {
+    this.thisMonthEndDate = endOfMonth(new Date());
+  }
+
+
+  /**
+   * Gets this  year's start date
+   */
+  getThisYearStartDate(): void {
+    this.thisYearStartDate = startOfYear(new Date());
+  }
+
+  /**
+   * Gets this year's end date
+   */
+  getThisYearEndDate(): void {
+    this.thisYearEndDate = endOfYear(new Date());
+  }
+
+
+  /**
+   * Get this current year quarters
+   */
+  getCurrentYearQuarters(): void {
+    // Setting values
+    this.getThisYearStartDate();
+    this.getThisYearEndDate();
+    this.currentYearQuarters = eachQuarterOfInterval({
+      start: this.thisYearStartDate,
+      end: this.thisYearEndDate
+    });
+  }
+
+
+  /**
+   * Gets last day of quarter
+   */
+  getLastDayOfQuarter(date: Date): Date {
+    return lastDayOfQuarter(date);
   }
 }
