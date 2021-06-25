@@ -7,7 +7,8 @@ import {
   startOfYear,
   endOfYear,
   eachQuarterOfInterval,
-  lastDayOfQuarter
+  lastDayOfQuarter,
+  format
 } from 'date-fns';
 
 @Component({
@@ -29,6 +30,7 @@ export class AppComponent {
    */
   getThisWeekStartDate(): void {
     this.thisWeekStartsDate = startOfWeek(new Date(), {weekStartsOn: 1});
+    this.thisWeekStartsDate = format(this.thisWeekStartsDate, 'MM/dd/yyyy');
   }
 
 
